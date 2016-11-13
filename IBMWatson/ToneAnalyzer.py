@@ -4,7 +4,7 @@ import urllib
 from bs4 import BeautifulSoup
 from operator import itemgetter
 
-url = "http://seekingalpha.com/article/4018571-zynga-znga-q3-2016-results-earnings-call-transcript"
+url = "http://seekingalpha.com/article/4020255-zyngas-window-closing"
 html = urllib.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -36,4 +36,8 @@ with open('data.json') as f:
     banana = max(items["document_tone"]["tone_categories"][0]["tones"], key=lambda ev: ev["score"])
     print banana
     if banana["tone_name"] == "Joy":
-        print "yay"
+        print "Joy"
+    print banana["score"]
+
+with open('zngatone', 'w') as f:
+    f.write(banana["tone_name"])
