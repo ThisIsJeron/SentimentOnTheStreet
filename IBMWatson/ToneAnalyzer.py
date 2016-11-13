@@ -2,8 +2,9 @@ import json
 from watson_developer_cloud import ToneAnalyzerV3
 import urllib
 from bs4 import BeautifulSoup
+from operator import itemgetter
 
-url = "http://seekingalpha.com/news/3223984-j-and-j-arthritis-drug-mixed-results-incumbents"
+url = "http://seekingalpha.com/article/4018571-zynga-znga-q3-2016-results-earnings-call-transcript"
 html = urllib.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -26,4 +27,13 @@ tone_analyzer = ToneAnalyzerV3(
    password='4CVOwMTL1JIq',
    version='2016-05-19 ')
 
-print(json.dumps(tone_analyzer.tone(text.encode('utf-8')), indent=2))
+with open('data.json', 'w') as outfile:
+    json.dump(tone_analyzer.tone(text.encode('utf-8')), outfile)
+
+with open('data.json') as f:
+    items = json.load(f)
+    #print items
+    banana = max(items["document_tone"]["tone_categories"][0]["tones"], key=lambda ev: ev["score"])
+    print banana
+    if banana["tone_name"] == "Joy":
+        print "yay"
