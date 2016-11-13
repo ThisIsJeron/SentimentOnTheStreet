@@ -1,5 +1,4 @@
 # ToneFolio
 
-Uses IBM's Bluemix APIs to find the sentiment of recent articles on Seeking Alpha,
-then looks to past Seeking Alpha article sentiment about same stock to predict whether stock is bullish or bearish. 
-Uses Nasdaq Data-On-Demand for past stock data and Blackrock's Aladdin API for additional information.
+Uses IBM Bluemix's Tone Analyzer API to find the sentiment of recent articles on Seeking Alpha,
+then uses Blackrock's Aladdin to analyze your portfolio to see if your positions are bullish or bearish.
