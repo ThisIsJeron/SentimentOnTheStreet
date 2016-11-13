@@ -4,7 +4,7 @@ import urllib
 from bs4 import BeautifulSoup
 from operator import itemgetter
 
-url = "http://seekingalpha.com/article/4020255-zyngas-window-closing"
+url = "http://seekingalpha.com/article/4022180-apples-new-macbook-pro-killing-competition"
 html = urllib.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -27,17 +27,13 @@ tone_analyzer = ToneAnalyzerV3(
    password='4CVOwMTL1JIq',
    version='2016-05-19 ')
 
-with open('data.json', 'w') as outfile:
+with open('aapl4.json', 'w') as outfile:
     json.dump(tone_analyzer.tone(text.encode('utf-8')), outfile)
 
-with open('data.json') as f:
+with open('aapl4.json') as f:
     items = json.load(f)
     #print items
     banana = max(items["document_tone"]["tone_categories"][0]["tones"], key=lambda ev: ev["score"])
     print banana
-    if banana["tone_name"] == "Joy":
-        print "Joy"
+    print banana["tone_name"]
     print banana["score"]
-
-with open('zngatone', 'w') as f:
-    f.write(banana["tone_name"])
