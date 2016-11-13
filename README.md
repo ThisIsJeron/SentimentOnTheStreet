@@ -1,4 +1,5 @@
 # ToneFolio
 
-Uses IBM Bluemix's Tone Analyzer API to find the sentiment of recent articles on Seeking Alpha,
-then uses Blackrock's Aladdin to analyze your portfolio to see if your positions are bullish or bearish.
+Uses Blackrock's Aladdin to analyze your portfolio and see what stocks you hold, and then uses 
+IBM Bluemix's Tone Analyzer API to determine whether your portfolio is bullish or bearish 
+with predictions drawn from the tone of recent Seeking Alpha articles of the stocks you hold.
