@@ -32,7 +32,7 @@ with open('aapl5.json', 'w') as outfile:
 
 with open('aapl5.json') as f:
     items = json.load(f)
-    #print items
+    print items
     banana = max(items["document_tone"]["tone_categories"][0]["tones"], key=lambda ev: ev["score"])
     print banana
     print banana["tone_name"]
